@@ -35,17 +35,229 @@ public class TicTacToe {
             return false;
         }
     }
-    public static void computerMove(String[] board, String mark, String compMark){
+    public static void computerMove(String[] board, String mark, String compMark,int counter){
         Random r = new Random();
-        while(true) {
-            int value = r.nextInt(9);
-            if (board[value] != mark) {
-                board[value] = compMark;
-                System.out.print("COMPUTER MOVE: " + (value +1));
-                break;
+        if(counter == 1){
+            while(true) {
+                int value = r.nextInt(4);
+                int move;
+                if(value ==0){
+                    move =1;
+                }
+                else if(value==1){
+                    move=3;
+                }
+                else if(value==2){
+                    move = 5;
+                }
+                else{
+                    move = 7;
+                }
+                if (board[move] != mark) {
+                    board[move] = compMark;
+                    System.out.print("COMPUTER MOVE: " + (value));
+                    break;
+                }
             }
         }
-
+        else{
+            // attack
+            if(board[0] == board[1] && board[0] == compMark && !board[2].equals(mark)){
+                board[2] = compMark;
+                System.out.print("COMPUTER MOVE: 3");
+            }
+            else if(board[1] == board[2] && board[1] == compMark&& !board[0].equals(mark)){
+                board[0] = compMark;
+                System.out.print("COMPUTER MOVE: 1");
+            }
+            else if(board[2] == board[0] && board[0] == compMark && !board[1].equals(mark)){
+                board[1] = compMark;
+                System.out.print("COMPUTER MOVE: 2");
+            }
+            else if(board[3] == board[4] && board[3] == compMark && !board[5].equals(mark)){
+                board[5] = compMark;
+                System.out.print("COMPUTER MOVE: 6");
+            }
+            else if(board[4] == board[5] && board[4] == compMark && !board[3].equals(mark)){
+                board[3] = compMark;
+                System.out.print("COMPUTER MOVE: 4");
+            }
+            else if(board[3] == board[5] && board[3] == compMark&& !board[4].equals(mark)){
+                board[4] = compMark;
+                System.out.print("COMPUTER MOVE: 5");
+            }
+            else if(board[6] == board[7] && board[6] == compMark && !board[8].equals(mark)){
+                board[8] = compMark;
+                System.out.print("COMPUTER MOVE: 9");
+            }
+            else if(board[6] == board[8] && board[6] == compMark && !board[7].equals(mark)){
+                board[7] = compMark;
+                System.out.print("COMPUTER MOVE: 8");
+            }
+            else if(board[7] == board[8] && board[7] == compMark && !board[6].equals(mark)){
+                board[6] = compMark;
+                System.out.print("COMPUTER MOVE: 7");
+            }
+            else if(board[0] == board[3] && board[3] == compMark && !board[6].equals(mark)){
+                board[6] = compMark;
+                System.out.print("COMPUTER MOVE: 8");
+            }
+            else if(board[3] == board[6] && board[3] == compMark && !board[0].equals(mark)){
+                board[0] = compMark;
+                System.out.print("COMPUTER MOVE: 1");
+            }
+            else if(board[0] == board[6] && board[0] == compMark && !board[3].equals(mark)){
+                board[3] = compMark;
+                System.out.print("COMPUTER MOVE: 5");
+            }
+            else if(board[1] == board[4] && board[1] == compMark && !board[7].equals(mark)){
+                board[7] = compMark;
+                System.out.print("COMPUTER MOVE: 8");
+            }
+            else if(board[1] == board[7] && board[1] == compMark && !board[4].equals(mark)){
+                board[4] = compMark;
+                System.out.print("COMPUTER MOVE: 5");
+            }
+            else if(board[4] == board[7] && board[4] == compMark && !board[1].equals(mark)){
+                board[1] = compMark;
+                System.out.print("COMPUTER MOVE: 2");
+            }
+            else if(board[2] == board[5] && board[2] == compMark && !board[8].equals(mark)){
+                board[8] = compMark;
+                System.out.print("COMPUTER MOVE: 9");
+            }
+            else if(board[2] == board[8] && board[2] == compMark && !board[5].equals(mark)){
+                board[5] = compMark;
+                System.out.print("COMPUTER MOVE: 6");
+            }
+            else if(board[0] == board[4] && board[0] == compMark && !board[8].equals(mark)){
+                board[8] = compMark;
+                System.out.print("COMPUTER MOVE: 9");
+            }
+            else if(board[4] == board[8] && board[4] == compMark && !board[0].equals(mark)){
+                board[0] = compMark;
+                System.out.print("COMPUTER MOVE: 1");
+            }
+            else if(board[0] == board[8] && board[0] == compMark && !board[4].equals(mark)){
+                board[4] = compMark;
+                System.out.print("COMPUTER MOVE: 5");
+            }
+            else if(board[6] == board[4] && board[6] == compMark && !board[2].equals(mark)) {
+                board[2] = compMark;
+                System.out.print("COMPUTER MOVE: 3");
+            }
+            else if(board[6] == board[2] && board[2] == compMark && !board[4].equals(mark)){
+                board[4] = compMark;
+                System.out.print("COMPUTER MOVE: 5");
+            }
+            else if(board[2] == board[4] && board[2] == compMark && !board[6].equals(mark)){
+                board[6] = compMark;
+                System.out.print("COMPUTER MOVE: 7");
+            }
+            // defense
+            else if(board[0] == board[1] && board[0] == mark && !board[2].equals(compMark)){
+                board[2] = compMark;
+                System.out.print("COMPUTER MOVE: 3");
+            }
+            else if(board[1] == board[2] && board[1] == mark&& !board[0].equals(compMark)){
+                board[0] = compMark;
+                System.out.print("COMPUTER MOVE: 1");
+            }
+            else if(board[2] == board[0] && board[0] == mark && !board[1].equals(compMark)){
+                board[1] = compMark;
+                System.out.print("COMPUTER MOVE: 2");
+            }
+            else if(board[3] == board[4] && board[3] == mark && !board[5].equals(compMark)){
+                board[5] = compMark;
+                System.out.print("COMPUTER MOVE: 6");
+            }
+            else if(board[4] == board[5] && board[4] == mark && !board[3].equals(compMark)){
+                board[3] = compMark;
+                System.out.print("COMPUTER MOVE: 4");
+            }
+            else if(board[3] == board[5] && board[3] == mark&& !board[4].equals(compMark)){
+                board[4] = compMark;
+                System.out.print("COMPUTER MOVE: 5");
+            }
+            else if(board[6] == board[7] && board[6] == mark && !board[8].equals(compMark)){
+                board[8] = compMark;
+                System.out.print("COMPUTER MOVE: 9");
+            }
+            else if(board[6] == board[8] && board[6] == mark && !board[7].equals(compMark)){
+                board[7] = compMark;
+                System.out.print("COMPUTER MOVE: 8");
+            }
+            else if(board[7] == board[8] && board[7] == mark && !board[6].equals(compMark)){
+                board[6] = compMark;
+                System.out.print("COMPUTER MOVE: 7");
+            }
+            else if(board[0] == board[3] && board[3] == mark && !board[6].equals(compMark)){
+                board[6] = compMark;
+                System.out.print("COMPUTER MOVE: 8");
+            }
+            else if(board[3] == board[6] && board[3] == mark && !board[0].equals(compMark)){
+                board[0] = compMark;
+                System.out.print("COMPUTER MOVE: 1");
+            }
+            else if(board[0] == board[6] && board[0] == mark && !board[3].equals(compMark)){
+                board[3] = compMark;
+                System.out.print("COMPUTER MOVE: 5");
+            }
+            else if(board[1] == board[4] && board[1] == mark && !board[7].equals(compMark)){
+                board[7] = compMark;
+                System.out.print("COMPUTER MOVE: 8");
+            }
+            else if(board[1] == board[7] && board[1] == mark && !board[4].equals(compMark)){
+                board[4] = compMark;
+                System.out.print("COMPUTER MOVE: 5");
+            }
+            else if(board[4] == board[7] && board[4] == mark && !board[1].equals(compMark)){
+                board[1] = compMark;
+                System.out.print("COMPUTER MOVE: 2");
+            }
+            else if(board[2] == board[5] && board[2] == mark && !board[8].equals(compMark)){
+                board[8] = compMark;
+                System.out.print("COMPUTER MOVE: 9");
+            }
+            else if(board[2] == board[8] && board[2] == mark && !board[5].equals(compMark)){
+                board[5] = compMark;
+                System.out.print("COMPUTER MOVE: 6");
+            }
+            else if(board[0] == board[4] && board[0] == mark && !board[8].equals(compMark)){
+                board[8] = compMark;
+                System.out.print("COMPUTER MOVE: 9");
+            }
+            else if(board[4] == board[8] && board[4] == mark && !board[0].equals(compMark)){
+                board[0] = compMark;
+                System.out.print("COMPUTER MOVE: 1");
+            }
+            else if(board[0] == board[8] && board[0] == mark && !board[4].equals(compMark)){
+                board[4] = compMark;
+                System.out.print("COMPUTER MOVE: 5");
+            }
+            else if(board[6] == board[4] && board[6] == mark && !board[2].equals(compMark)) {
+                board[2] = compMark;
+                System.out.print("COMPUTER MOVE: 3");
+            }
+            else if(board[6] == board[2] && board[2] == mark && !board[4].equals(compMark)){
+                board[4] = compMark;
+                System.out.print("COMPUTER MOVE: 5");
+            }
+            else if(board[2] == board[4] && board[2] == mark && !board[6].equals(compMark)){
+                board[6] = compMark;
+                System.out.print("COMPUTER MOVE: 7");
+            }
+            else{
+                while(true) {
+                    int value = r.nextInt(9);
+                    if (board[value] != mark) {
+                        board[value] = compMark;
+                        System.out.print("COMPUTER MOVE: " + (value+1));
+                        break;
+                    }
+                }
+            }
+        }
     }
     public static void printMessage(String boardMark, String mark){
         if(boardMark.equals(mark)){
@@ -122,7 +334,7 @@ public class TicTacToe {
                 System.out.println("COUNTER=" + counter);
                 if(!checkWinner(board,counter,mark)) {
                     if (counter < 9) {
-                        computerMove(board, mark, compMark);
+                        computerMove(board, mark, compMark,counter);
                         counter++;
                         System.out.println("COUNTER=" + counter);
                         if(checkWinner(board,counter,mark)){
